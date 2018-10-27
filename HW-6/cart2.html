@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MuddyPaws</title>
+    <meta charset="UTF-8">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
+    <!-- Font-Awesome Library used for star rating graphics -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <!-- Nav Bar -->
+  <header>
+    <div class="container">
+      <a href="#"><img src="assets/logo.png" class="logo"> </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="results.html">Shop</a></li>
+          <li><a href="#">About</a></li>
+
+          <a href="#"><img src="assets/user.png" id="user"> </a>
+          <a href="#"><img src="assets/cart.png" id="cart"> </a>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
+
+  <!-- Subheader container for backbutton -->
+  <section class="subheader">
+    <a href="results.html">
+      <button id="back-button2"><strong>< Back</strong></button>
+    </a>
+  </section>
+
+  <!-- Left column contains primary product image and 4 thumbnails for alternative product views -->
+  <div>
+    <h1 id="cart-title">Your Shopping Cart:</h1>
+  </div>
+  <section id="left-column-cart">
+    <div id="cart-header">
+      <p class="cart-header-label" id="cart-item-label">item</p>
+      <p class="cart-header-label">price</p>
+      <p class="cart-header-label">qty</p>
+    </div>
+    <div class="cart-container">
+      <!-- Cart Row/Entry -->
+      <div class="cart-row">
+
+        <div class="image-holder-cart cart-block">
+          <img src="assets/DogBackpackA.png" alt="Dog Backpack" class="cart-image-thumbnail" height=100 width=100>
+        </div>
+
+        <div class="product-cart-info cart-block">
+          <h4 class="product-title-cart">PuppyPak (0.5L)</h4>
+          <p><strong>Item No:</strong> 54321 <p>
+          <p><strong>Size:</strong> Medium <p>
+          <p><strong>Color: </strong> Cool Blue</p>
+          <p id="remove-cart"><a class="link-text" href="#">Remove Item</a></p>
+        </div>
+
+        <div class="cart-block cart-price">
+          <span class="price">$44.99</span>
+        </div>
+
+        <div class="cart-block" id="quantity-selector">
+          <button class="sub-quantity-button cart-block"> - </button>
+          <div id="quantity-holder-cart"> 1 </div>
+          <button class="add-quantity-button"> + </button>
+        </div>
+      </div>
+
+      <div class="cart-row">
+
+        <div class="image-holder-cart" "cart-block">
+          <img src="assets/mud-silver.png" alt="Dog Backpack" class="cart-image-thumbnail" height=100 width=100>
+        </div>
+
+        <div class="product-cart-info cart-block">
+          <h4 class="product-title-cart">RuggedPup Vest</h4>
+          <p><strong>Item No:</strong> 54321 <p>
+          <p><strong>Size:</strong> Medium <p>
+          <p><strong>Color: </strong>Mud/Silver</p>
+          <p id="remove-cart"><a class="link-text" href="#">Remove Item</a></p>
+        </div>
+
+        <div class="cart-block cart-price">
+          <span class="price">$79.99</span>
+        </div>
+
+        <div class="cart-block" id="quantity-selector">
+          <button class="sub-quantity-button" "cart-block"> - </button>
+          <div id="quantity-holder-cart"> 1 </div>
+          <button class="add-quantity-button"> + </button>
+        </div>
+      </div>
+      <div>
+        <div class="flavour-wrapper" id="wrapper">
+        </div>
+      </div>
+
+    </div>
+
+
+  </section>
+
+  <!-- Right column contains Product info (title, rating, price) and product options form (size, color, quantity, addcart) -->
+  <section id="right-column-cart">
+    <div id="cart-summary">
+      <div id="cart-summary-header">
+        <h4>Summary</h4>
+      </div>
+      <div id="cart-summary-body">
+        <div id="cart-summary-breakdown">
+          <p><span><strong>Subtotal:</strong></span> <span class="price cart-summary-price">$124.98</span></p>
+          <p><span><strong>Shipping:</strong></span> <span class="price cart-summary-price">FREE</span></p>
+          <p><span><strong>Tax (estimated)</strong></span> <span class="price cart-summary-price">$8.75</span></p>
+          <p id="cart-summary-total"><span><strong>Total</strong></span> <span class="price cart-summary-price">$133.73</span></p>
+
+        </div>
+        <div id="button-container">
+          <button id="checkout-button">Checkout >></button>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </section>
+
+</body>
+
+</html>

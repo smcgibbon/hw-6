@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MuddyPaws</title>
+    <meta charset="UTF-8">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
+    <!-- Font-Awesome Library used for star rating graphics-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <!-- Nav Bar -->
+  <header>
+    <div class="container">
+      <a href="#"><img src="assets/logo.png" class="logo"> </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="results.html">Shop</a></li>
+          <li><a href="#">About</a></li>
+
+          <a href="#"><img src="assets/User.png" id="user"> </a>
+          <a href="cart.html" id="cart"><img src="assets/cart.png">(<span class="cart-count"></span>)</a>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
+
+  <!-- Hero Image + Content (Hero title, L/R arrows, explore button)-->
+  <div class="hero-image">
+      <div id="hero-title">
+        <li class="hero-title-content">
+          <img src="assets/logo2.png">
+        </li>
+
+        <li class="hero-title-content">
+          <div id="vl"></div>
+        </li>
+
+        <li class="hero-title-content">
+          <h2 class="title">Dogs: Best of '18</h2>
+        </li>
+      </div>
+
+
+      <div>
+        <li class="arrowleft">
+          <img class="button" src="assets/ArrowLeft.png">
+        </li>
+        <li class="arrowright">
+          <img class="button" src="assets/ArrowRight.png">
+        </li>
+      </div>
+
+
+    <div id="explore-container">
+      <a href="results.html"><button id="explore">Explore >></button></a>
+    </div>
+
+  </div>
+
+  <!-- "Featured" section -->
+  <section id="left-column-home">
+    <div class="section-title">Featured</div>
+    <button class="see-all-button">See all ></button>
+
+    <ul>
+      <li class="arrowleft2">
+        <img class="button" src="assets/ArrowLeft.png" height=30px width=20px>
+      </li>
+
+      <li class="product-holder-home">
+        <article>
+          <a class="link" href="product.html">
+
+            <div class="image-holder">
+              <img src="assets/DogBackpackA.png" alt="Dog Backpack" class="product-image" width=150 height=150>
+            </div>
+
+            <span>
+              <h4 class="content">PuppyPak (0.5L)</h4>
+            </span>
+
+            <div class="product-info">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="rating">(300)</span>
+
+                <p class="price">$44.99</p>
+            </div>
+          </a>
+        </article>
+      </li>
+
+      <li class="product-holder-home">
+        <article>
+          <a class="link" href="product.html">
+
+            <div class="image-holder">
+              <img src="assets/results3.png" alt="Dog Backpack" class="product-image" width=150 height=150>
+            </div>
+
+            <span>
+              <h4 class="content">Xtreme Dog Thermal</h4>
+            </span>
+
+            <div class="product-info">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="rating">(179)</span>
+
+                <p class="price">$99.99</p>
+            </div>
+          </a>
+        </article>
+      </li>
+
+      <li class="arrowright2">
+        <img class="button" src="assets/ArrowRight.png" height=30px width=20px>
+      </li>
+
+    </ul>
+
+  </section>
+
+  <!-- "Sale" section -->
+  <section id="right-column-home">
+    <div>
+      <div class="section-title">Sale</div>
+      <button class="see-all-button">See all ></button>
+    </div>
+
+    <ul>
+      <li class="arrowleft2">
+        <img class="button" src="assets/ArrowLeft.png" height=30px width=20px>
+      </li>
+
+      <li class="product-holder-home">
+        <article>
+          <a class="link" href="product.html">
+
+            <div class="image-holder">
+              <img src="assets/results4.png" alt="Dog Backpack" class="product-image" width=150 height=150>
+            </div>
+
+            <span>
+              <h4 class="content">Action Specs</h4>
+            </span>
+
+            <div class="product-info">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="rating">(67)</span>
+
+                <p class="price">$20.99</p>
+            </div>
+          </a>
+        </article>
+      </li>
+
+      <li class="product-holder-home">
+        <article>
+          <a class="link" href="product.html">
+
+            <div class="image-holder">
+              <img src="assets/results7.png" alt="Dog Backpack" class="product-image" width=150 height=150>
+            </div>
+
+            <span>
+              <h4 class="content">Travel Bowl</h4>
+            </span>
+
+            <div class="product-info">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="rating">(248)</span>
+
+                <p class="price">$14.99</p>
+            </div>
+          </a>
+        </article>
+      </li>
+
+      <li class="arrowright2">
+        <img class="button" src="assets/ArrowRight.png" height=30px width=20px>
+      </li>
+
+    </ul>
+
+  </section>
+
+</body>
+
+</html>
