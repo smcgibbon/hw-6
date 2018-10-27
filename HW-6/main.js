@@ -1,29 +1,28 @@
+// LOADS ON PAGE READY
 jQuery(document).ready(function(){
-
+    //INITIALIZING VARIABLES + RETRIEVING FROM MEMORY
     GetFromStorage();
     var fieldName = 'quantity';
     var colorName = null;
     var sizeName = null;
     function addListeners() {
-      // This button will increment the value
+      // INCREMENT FUNCTION --> ADDS TO QUANTITY VALUES ON CLICK
       $(".add-quantity-button").click(function(){
-        console.log("in add click func");
-          // Get the field name
           fieldName = $(this).attr('field');
-          // Get its current value
           console.log(fieldName);
           var currentVal = parseInt($('input[name='+fieldName+']').val());
-          // If is not undefined
+          // IF VALUE IS NOT UNDEFINED
           if (!isNaN(currentVal)) {
-              // Increment field value
+              // INCREMENT FIELD VALUE
               $('input[name='+fieldName+']').val(currentVal + 1);
+              // CHECK IF FIELD IS ON THE CART PAGE OR PRODUCT PAGE
               if (fieldName !== 'quantity') {
                 // PULL ITEM ENTRY FROM MEMORY
                 var cartStorage = GetFromStorage();
                 var item = cartStorage[fieldName];
                 // UPDATE QTY VALUE
                 cartStorage[fieldName].qty = (item.qty+1);
-                // SET
+                // SET ITEM VALUE
                 localStorage.setItem('STORAGE', JSON.stringify(cartStorage));
 
                 console.log(item);
@@ -31,64 +30,67 @@ jQuery(document).ready(function(){
           }
 
           else {
-              // Otherwise put a 0 there
+              // OTHERWISE PUT A ZERO THERE
               $('input[name='+fieldName+']').val(0);
           }
+          // UPDATE SUBTOTAL AND NUMBER OF ITEMS IN CART
           CalcSubTotal();
           CalcCartCount();
       });
 
-      // This button will decrement the value till 0
+      // INCREMENT FUNCTION --> SUBTRACTS QUANTITY VALUES ON CLICK UNTIL 1
       $(".sub-quantity-button").click(function() {
-          console.log("in sub click func");
-          // Get the field name
           fieldName = $(this).attr('field');
           console.log(fieldName);
-          // Get its current value
+          // GET CURRENT VALUE
           var currentVal = parseInt($('input[name='+fieldName+']').val());
-          // If it isn't undefined or its greater than 1
+          // IF VALUE ISN'T UNDEFINED AND GREATER THAN 1
           if (!isNaN(currentVal) && currentVal > 1) {
-              // Decrement one
+              // DECREMENT BY 1
               $('input[name='+fieldName+']').val(currentVal - 1);
-
+              // CHECK WHETHER FIELD IS ON THE CART PAGE OR THE PRODUCT PAGE
               if (fieldName !== 'quantity') {
                 // PULL ITEM ENTRY FROM MEMORY
                 var cartStorage = GetFromStorage();
                 var item = cartStorage[fieldName];
                 // UPDATE QTY VALUE
                 cartStorage[fieldName].qty = (item.qty-1);
-                // SET
+                // SET ITEM
                 localStorage.setItem('STORAGE', JSON.stringify(cartStorage));
                 console.log(item);
               }
-
-
           } else {
-              // Otherwise put a 1 there
+              // OTHERWISE PUT A 1 THERE
               $('input[name='+fieldName+']').val(1);
           }
+          // UPDATE SUBTOTAL AND NUMBER OF ITEMS IN CART
           CalcSubTotal();
           CalcCartCount();
       });
 
+      // COLOR SELECTOR BUTTON
       $(".color-image-thumbnail-holder").click(function() {
           colorName = $(this).attr("color");
           $("#product-image-main").attr("src", "assets/" + colorName + ".png");
           $("#color-label").text(colorName);
           console.log(colorName);
+          // CHECKS IF USER HAS ENTERED BOTH COLOR AND SIZE
           cartIsValid();
           return colorName;
       });
-
+      // SIZE SELECTOR BUTTONS
       $(".size-button").click(function() {
           sizeName = $(this).attr("size");
           $("#size-label").text(sizeName);
           console.log(sizeName);
+          // CHECKS IF USER HAS ENTERED BOTH COLOR AND SIZE
           cartIsValid();
           return sizeName;
       });
 
+      // CREATE NEW ITEM, ADD TO LOCAL STORAGE, PASS TO CART
       $('#addtocart-button').click(function() {
+        // ITEM CONSTRUCTOR
         function item(name, size, color, qty, price) {
           this.name = name;
           this.size = size;
@@ -97,24 +99,24 @@ jQuery(document).ready(function(){
           this.price = price;
         }
 
-        // var newItem = new item($(".product-title").text(), $("#size-label").text(), $("#color-label").text(), $("#quantity-holder").attr("value"), $("#product-price .price").text());
+        // CREATE NEW ITEM
         var newItem = new item($(".product-title").text(), $("#size-label").text(), $("#color-label").text(), parseInt($('input[name='+fieldName+']').val()), parseFloat($("#product-price #price-label").text()));
-        //console.log(newItem);
+
+        // CHECKS IF USER HAS SELECTED SIZE AND COLOR BEFORE ADDING
         if ((newItem.color !== "" && newItem.size !== "")) {
           var cartItems = GetFromStorage();
           cartItems.push(newItem);
           localStorage.setItem('STORAGE', JSON.stringify(cartItems));
           console.log('WRITTEN TO STORAGE');
           console.log(GetFromStorage());
-          // var cartItem = JSON.parse('newItem');
-          // console.log(cartItem);
+          // UPDATE NUMBER OF ITEMS IN CART
           CalcCartCount();
         }
       });
     }
 
     function onReady() {
-
+      // RETRIEVES ITEM OBJECT FROM MEMORY AND CONSTRUCTS NEW HTML IN CART PAGE
       var wrapper = document.getElementById('wrapper');
       var cartStorage = GetFromStorage();
       console.log(cartStorage);
@@ -141,11 +143,7 @@ jQuery(document).ready(function(){
         </div>
       </li>`;
 
-      /* <div class="cart-block" id="quantity-selector">
-      <button class="sub-quantity-button" field="ADD_FIELD_REF"> - </button>
-      <div id="quantity-holder-cart">ITEM_QTY</div>
-      <button class="add-quantity-button" field="SUB_FIELD_REF"> + </button>
-      */
+      // FILLS IN ITEM-SPECIFIC VALUES IN TEMPLATE
       for (var i = 0; i < cartStorage.length; i++) {
         var item = cartStorage[i];
         var itemTmpl = template;
@@ -168,6 +166,7 @@ jQuery(document).ready(function(){
         }
       }
 
+      // REMOVES ITEM FROM CART, DELETES FROM MEMORY
       $('.remove-cart').click(function() {
         var target = $(this).closest('li');
         var index = null;
@@ -181,12 +180,15 @@ jQuery(document).ready(function(){
           console.log(cartStorage);
           localStorage.setItem('STORAGE', JSON.stringify(cartStorage));
         }
+        // UPDATE SUBTOTAL AND NUMBER OF ITEMS IN CART
         CalcSubTotal();
         CalcCartCount();
       });
+      // ADDS LISTENERS TO INTERACTIVE OBJECTS IN CART ITEM HTML
       addListeners();
     }
 
+    // RETRIEVES OBJECTS FROM STORAGE
     function GetFromStorage() {
       var storage = localStorage.getItem('STORAGE');
       if (storage) {
@@ -195,6 +197,7 @@ jQuery(document).ready(function(){
       return[];
     }
 
+    // UPDATES NUMBER OF ITEMS IN CART
     function CalcCartCount() {
       var cartCount = 0;
       var cartStorage = GetFromStorage();
@@ -205,6 +208,7 @@ jQuery(document).ready(function(){
       $(".cart-count").text(cartCount);
     }
 
+    // UPDATES CART SUBTOTAL, TAX, TOTAL
     function CalcSubTotal() {
       var subtotal = 0;
       var tax = 0;
@@ -222,6 +226,7 @@ jQuery(document).ready(function(){
       $("#price-total").text(total.toFixed(2));
     }
 
+    // CHECKS IF USER HAS SELECTED BOTH A COLOR AND SIZE, ADJUSTS ADD-TO-CART BUTTON CSS
     function cartIsValid() {
       if (colorName !== null && sizeName !== null) {
         $('#addtocart-button').css('background-color', '#28E097');
